@@ -105,17 +105,16 @@ while True:
         img_erosionRz = cv2.putText(img_erosionRz, 'Morphology-Erosion', (5, 15), font, 0.5, RED, 1, cv2.LINE_AA)
         edgedRz = cv2.putText(edgedRz, 'Canny Edges', (5, 15), font, 0.5, RED, 1, cv2.LINE_AA)
 
-
+        # Исходное изображение
+        cv2.imshow('Original Image', imageOri)
         # Количество контуров
         num_of_con = str(len(contours) - 1)
-        print("Number of Contours found = " + num_of_con)
+        print("Количество обнаруженных дефектов = " + num_of_con)
         if len(contours) > 1:
             print('=========================================')
             print('=       Обнаруженные дефекты            =')
             print('=========================================\n\n')
 
-        # Исходное изображение
-        cv2.imshow('Original Image', imageOri)
         # Отрисовка контуров поверх исходного
         if int(num_of_con) != 0:
             for i in range(int(num_of_con)):
@@ -127,6 +126,7 @@ while True:
         else:
             highlighted_img = cv2.putText(imageOri, 'Unable to detect defects!',
                                           (5, 15), font, 0.5, RED, 2, cv2.LINE_AA)
+
 
         # Отображение выделенных дефектов
         cv2.imshow('Highlighted Defect', highlighted_img)
